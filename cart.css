@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+html{
+    scroll-behavior: smooth ;
+    scrollbar-width: none;
+}
+body{
+    background-color: #fff;
+    font-family: "Inter", sans-serif;
+    overflow-y: scroll;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    display: flex;
+    text-decoration: none;
+    justify-content: space-around;
+    background: none;
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.7);
+    background: #fff;
+
+}
+
+
+nav .logo img{
+    height: 6vh;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    align-items: center;
+
+}
+nav ul li{
+    margin-left: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+    
+}
+
+nav a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px;
+  }
+  
+  .cart-table th, .cart-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .cart-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .increase-btn, .decrease-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .increase-btn:hover, .decrease-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-btn {
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 30px 0 0 5px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #e60000;
+  }
+  
+  .cart-total {
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .cart-actions{
+    display: flex;
+    justify-content: end;
+    margin: 0 20px;
+    
+  }
+
+
+  h1{
+    padding: 100px 0 10px 20px;
+  }
+
+  footer{
+    display: flex;
+    justify-content: center;
+  }
+
+  a{
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+
+
+  /* button animation */
+
+.btn {
+  padding: 15px 40px;
+  border: none;
+  outline: none;
+  color: #FFF;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+
+}
+.btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+/* glow */
+.btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FF7300, #FFFB00, #48FF00,
+    #00FFD5, #002BFF, #FF00C8, #FF0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/* hover */
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:active {
+  color: #000;
+  font-weight: bold;
+}
+  

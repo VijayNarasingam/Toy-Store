@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shop.css">
+    <title>Shop</title>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+        <img src="img/luffy.png" alt="Logo">
+    </div>
+    <ul>
+        <a href="index.html"><li>Home</li></a>
+        <a href="shop.html"><li>Shop</li></a>
+        <a href="cart.html"><li>Cart</li></a>
+        <a href="tracking.html"><li>Order</li></a>
+        <a href="#contact"><li>Contact us</li></a>
+    </ul>
+</nav>
+
+ <div id="shop">    
+    
+    <div class="products">
+        <h1>Product List</h1>
+
+    <!-- Search bar -->
+    <input type="text" id="search-input" placeholder="Search for products..." onkeyup="filterProducts()">
+    <label for="">Search</label>
+    <div class="product-list">
+      <div class="product" data-id="1" data-name="Martial Arts Master" data-price="699">
+        <div class="image"><img src="img/tv samiyar.png" alt="Product 1"></div>
+        <h3>Martial Arts Master</h3>
+        <div class="offer">
+            30% off
+        </div>
+        <p>₹<s>1299</s> ₹699</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=1" class="view-product"><button>View Product</button></a>
+      </div>
+  
+
+      <div class="product" data-id="2" data-name="one piece monkey d luffy" data-price="899">
+        <div class="image"><img src="img/luffy.png" alt="Product 1"></div>
+        <h3>Monkey D Luffy (Gear 5)</h3>
+        <div class="special-offer">
+            Great Sale 40% OFF
+        </div>
+        <p>₹<s>1499</s> ₹899</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=2" class="view-product"><button>View Product</button></a>
+      </div>
+
+
+      <div class="product" data-id="3" data-name="hulk avangers" data-price="629">
+        <div class="image"><img src="img/hulk.png" alt="Product 1"></div>
+        <h3>Hulk</h3>
+        <div class="offer">
+            10% off
+        </div>
+        <p>₹<s>699</s> ₹629</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=3" class="view-product"><button>View Product</button></a>
+      </div>
+  
+
+      <div class="product" data-id="4" data-name="one punch man" data-price="559">
+        <div class="image"><img src="img/one-punch-man.png" alt="Product 1"></div>
+        <h3>One punch man</h3>
+        <div class="offer">
+            30% off
+        </div>
+        <p>₹<s>899</s> ₹559</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=4" class="view-product"><button>View Product</button></a>
+      </div>
+
+
+      <div class="product" data-id="5" data-name="sanji one piece" data-price="539">
+        <div class="image"><img src="img/saanji.png" alt="Product 1"></div>
+        <h3>Sanji</h3>
+        <div class="special-offer">
+          Great Sale 40% OFF
+      </div>
+        <p>₹<s>899</s> ₹539</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=5" class="view-product"><button>View Product</button></a>
+      </div>
+  
+
+      <div class="product" data-id="6" data-name="zoro one piece" data-price="659">
+        <div class="image"><img src="img/zoro.png" alt="Product 1"></div>
+        <h3>Zoro</h3>
+        <div class="special-offer">
+          Great Sale 40% OFF
+      </div>
+        <p>₹<s>1099</s> ₹659</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=6" class="view-product"><button>View Product</button></a>
+      </div>
+
+
+      <div class="product" data-id="7" data-name="L death note" data-price="399">
+        <div class="image"><img src="img/L2.png" alt="Product 1"></div>
+        <h3>L (Death Note)</h3>
+        <div class="offer">
+            20% off
+        </div>
+        <p>₹<s>499</s> ₹399</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=7" class="view-product"><button>View Product</button></a>
+      </div>
+  
+
+      <div class="product" data-id="8" data-name="sonic" data-price="219">
+        <div class="image"><img src="img/sonic_2-removebg-preview.png" alt="Product 1"></div>
+        <h3>Sonic</h3>
+        <div class="offer">
+            46% off
+        </div>
+        <p>₹<s>399</s> ₹219</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=8" class="view-product"><button>View Product</button></a>
+      </div>
+
+
+      <div class="product" data-id="9" data-name="gold d roger one piece" data-price="799">
+        <div class="image"><img src="img/Gold_D_roger-removebg-preview.png" alt="Product 1"></div>
+        <h3>Gold D Roger</h3>
+        <div class="special-offer">
+          Great Sale 40% OFF
+      </div>
+        <p>₹<s>1299</s> ₹779</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=9" class="view-product"><button>View Product</button></a>
+      </div>
+  
+
+      <div class="product" data-id="10" data-name="shoya ishida A silent voice" data-price="519">
+        <div class="image"><img src="img/Shoya_Ishida-1-removebg-preview.png" alt="Product 1"></div>
+        <h3>Shoya Ishida</h3>
+        <div class="offer">
+            25% off
+        </div>
+        <p>₹<s>699</s> ₹519</p>
+        <p class="detail-text">Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.</p>
+        <a href="product.html?id=10" class="view-product"><button>View Product</button></a>
+      </div>
+
+
+
+      <!-- Add more products as needed -->
+    </div></div>
+    </div>
+  
+    <footer>
+      <a href="cart.html">Go to Cart &#8599;</a>
+    </footer>
+  
+    <script>
+        function filterProducts() {
+          // Get the search query and convert to lowercase
+          const searchQuery = document.getElementById('search-input').value.toLowerCase();
+    
+          // Get all products
+          const products = document.querySelectorAll('.product');
+    
+          // Loop through all products and hide/show based on search query
+          products.forEach(product => {
+            const productName = product.getAttribute('data-name').toLowerCase();
+    
+            // If the product name includes the search query, display it; otherwise, hide it
+            if (productName.includes(searchQuery)) {
+              product.style.display = 'block';
+            } else {
+              product.style.display = 'none';
+            }
+          });
+        }
+      </script>
+</body>
+</html>

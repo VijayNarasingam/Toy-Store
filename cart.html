@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+        <img src="img/luffy.png" alt="Logo">
+    </div>
+    <ul>
+        <a href="index.html"><li>Home</li></a>
+        <a href="shop.html"><li>Shop</li></a>
+        <a href="cart.html"><li>Cart</li></a>
+        <a href="tracking.html"><li>Order</li></a>
+        <a href="#contact"><li>Contact us</li></a>
+    </ul>
+</nav>
+
+
+
+    <h1>Your Cart</h1>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Product Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody class="cart-items">
+        <!-- Cart items will be dynamically inserted here -->
+      </tbody>
+    </table>
+  
+    <div class="cart-total">
+      <p><strong>Total: ₹<span id="total-price">0</span></strong></p>
+    </div>
+  
+    <div class="cart-actions">
+      <button id="buy-now-btn" class="btn">Buy Now</button>
+    </div>
+  
+    <footer>
+      <a href="shop.html">Back to Product List &#8599;</a> &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="tracking.html">Track Your Order &#8599;</a>
+    </footer>
+  
+    <script>
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      const cartItemsTableBody = document.querySelector('.cart-items');
+      const totalPriceEl = document.getElementById('total-price');
+      const buyNowBtn = document.getElementById('buy-now-btn');
+  
+      let totalPrice = 0;
+  
+      function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+  
+      function updateQuantity(productId, action) {
+        cart = cart.map(item => {
+          if (item.id === productId) {
+            if (action === 'increase') {
+              item.quantity += 1;
+            } else if (action === 'decrease' && item.quantity > 1) {
+              item.quantity -= 1;
+            }
+          }
+          return item;
+        });
+  
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+  
+      function renderCart() {
+        cartItemsTableBody.innerHTML = '';
+        totalPrice = 0;
+  
+        if (cart.length === 0) {
+          cartItemsTableBody.innerHTML = '<tr><td colspan="6">Your cart is empty</td></tr>';
+          totalPriceEl.innerText = '0';
+          buyNowBtn.style.display = 'none';
+          return;
+        }
+  
+        buyNowBtn.style.display = 'inline-block';
+  
+        cart.forEach(item => {
+          const productTotal = (item.price * item.quantity).toFixed(2);
+  
+          const cartItemRow = document.createElement('tr');
+          cartItemRow.innerHTML = `
+            <td><img src="${item.image}" alt="${item.name}" class="product-image"></td>
+            <td>${item.name}</td>
+            <td>₹${item.price}</td>
+            <td>
+              <button class="decrease-btn" data-id="${item.id}">–</button>
+              <span>${item.quantity}</span>
+              <button class="increase-btn" data-id="${item.id}">+</button>
+            </td>
+            <td>₹${productTotal}</td>
+            <button class="delete-btn" data-id="${item.id}">Delete</button></td>
+          `;
+  
+          cartItemsTableBody.appendChild(cartItemRow);
+          totalPrice += parseFloat(productTotal);
+        });
+  
+        totalPriceEl.innerText = totalPrice.toFixed(2);
+  
+        document.querySelectorAll('.increase-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const productId = parseInt(this.getAttribute('data-id'));
+            updateQuantity(productId, 'increase');
+          });
+        });
+  
+        document.querySelectorAll('.decrease-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const productId = parseInt(this.getAttribute('data-id'));
+            updateQuantity(productId, 'decrease');
+          });
+        });
+  
+        document.querySelectorAll('.delete-btn').forEach(button => {
+          button.addEventListener('click', function() {
+            const productId = parseInt(this.getAttribute('data-id'));
+            removeFromCart(productId);
+          });
+        });
+      }
+  
+      buyNowBtn.addEventListener('click', function() {
+    const orderDetails = {
+        items: cart,
+        totalPrice: totalPrice,
+        orderDate: new Date().toISOString()
+    };
+    localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+    window.location.href = 'payment.html'; // Redirect to the payment page
+});
+
+
+
+  
+      renderCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Tracking</title>
+  <link rel="stylesheet" href="tracking.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="img/luffy.png" alt="Logo">
+        </div>
+        <ul>
+            <a href="index.html"><li>Home</li></a>
+            <a href="shop.html"><li>Shop</li></a>
+            <a href="cart.html"><li>Cart</li></a>
+            <a href="tracking.html"><li>Order</li></a>
+            <a href="#contact"><li>Contact us</li></a>
+        </ul>
+    </nav>
+
+    <h1>Your Order Tracking</h1>
+
+    <div id="order-details">
+        <!-- Order details will be dynamically inserted here -->
+    </div>
+
+    <footer>
+      <a href="shop.html">Back to Product List &#8599;</a> &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="cart.html">Back to Cart &#8599;</a>
+    </footer>
+
+    <script>
+      const orderDetailsEl = document.getElementById('order-details');
+      const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+      function renderOrderDetails() {
+        if (!orderDetails) {
+          orderDetailsEl.innerHTML = '<p>No order details found.</p>';
+          return;
+        }
+
+        const { items, totalPrice, orderDate } = orderDetails;
+
+        let orderHTML = `<p><strong>Order Date:</strong> ${new Date(orderDate).toLocaleString()}</p>`;
+        orderHTML += `<table>
+                        <thead>
+                          <tr>
+                            <th>Product Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>`;
+
+        items.forEach(item => {
+          const productTotal = (item.price * item.quantity).toFixed(2);
+          orderHTML += `<tr>
+                          <td>${item.name}</td>
+                          <td>₹${item.price.toFixed(2)}</td>
+                          <td>${item.quantity}</td>
+                          <td>₹${productTotal}</td>
+                        </tr>`;
+        });
+
+        orderHTML += `</tbody></table>`;
+        orderHTML += `<p><strong>Total: ₹${totalPrice.toFixed(2)}</strong></p>`;
+
+        orderDetailsEl.innerHTML = orderHTML;
+      }
+
+      renderOrderDetails();
+    </script>
+</body>
+</html>

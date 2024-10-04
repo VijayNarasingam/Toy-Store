@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+        <img src="img/luffy.png" alt="Logo">
+    </div>
+    <ul>
+        <a href="index.html"><li>Home</li></a>
+        <a href="shop.html"><li>Shop</li></a>
+        <a href="cart.html"><li>Cart</li></a>
+        <a href="tracking.html"><li>Order</li></a>
+        <a href="#contact"><li>Contact us</li></a>
+    </ul>
+</nav>
+
+
+  
+  <div class="all">
+    <img id="product-image" src="" alt="Product Image">
+  <div class="details">
+    <h1 id="product-name">Product Name</h1>
+    <p id="product-discount">0%OFF</p>
+    <div class="prices">
+      <s id="product-orprice">0.00</s> &nbsp;
+    <p id="product-price">₹0.00</p>
+    </div>
+    <p id="product-detail"></p>
+  <button id="add-to-cart">Add to Cart</button>  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+  <a href="cart.html">Go to Cart</a>
+  </div>
+  </div>
+
+  <footer>
+
+    <a href="shop.html">Back to Product List</a>
+  </footer>
+
+  <script>
+    // Sample product data (you can replace this with actual server data)
+    const products = [
+      { id: 1, name: 'Martial Arts Master', orprice:1299, price: 699, discount:'30% OFF' , image: 'img/tv samiyar.png',                             detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 2, name: 'Monkey D Luffy',      orprice:1499, price: 899, discount:'40% OFF' , image: 'img/luffy.png' ,                                 detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 3, name: 'Hulk',                orprice:699,  price: 629, discount:'10% OFF' , image: 'img/hulk.png' ,                                  detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 4, name: 'One punch man',       orprice:899,  price: 599, discount:'30% OFF' , image: 'img/one-punch-man.png',                          detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 5, name: 'Sanji',               orprice:899,  price: 539, discount:'40% OFF' , image: 'img/saanji.png',                                 detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 6, name: 'Zoro',                orprice:1099, price: 659, discount:'40% OFF' , image: 'img/zoro.png',                                   detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 7, name: 'L death note',        orprice:499,  price: 399, discount:'20% OFF' , image: 'img/L2.png' ,                                    detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 8, name: 'Sonic',               orprice:399,  price: 219, discount:'46% OFF' , image: 'img/sonic_2-removebg-preview.png',               detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 9, name: 'Gold D Roger',        orprice:1299, price: 779, discount:'30% OFF' , image: 'img/Gold_D_roger-removebg-preview.png',          detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' },
+      { id: 10, name: 'Shoya Ishida',       orprice:699,  price: 519, discount:'25% OFF' , image: 'img/Shoya_Ishida-1-removebg-preview.png',        detail:'Lorem ipsum dolor sit amet consectetur. Consectetur accumsan egestas nulla cursus quam mauris.' }
+
+
+
+    ];
+
+
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+
+    // Find the selected product
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+      // Display product details
+      document.getElementById('product-name').innerText = product.name;
+      document.getElementById('product-detail').innerText = product.detail;
+      document.getElementById('product-price').innerText = `₹${product.price}`;
+      document.getElementById('product-orprice').innerText = `₹${product.orprice}`;
+      document.getElementById('product-discount').innerText = `${product.discount}`;
+      document.getElementById('product-image').src = product.image;
+
+      // Add product to cart
+      document.getElementById('add-to-cart').addEventListener('click', () => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingProduct = cart.find(item => item.id === product.id);
+
+        if (existingProduct) {
+          existingProduct.quantity += 1;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+      });
+    } else {
+      document.body.innerHTML = '<h2>Product not found</h2>';
+    }
+  </script>
+</body>
+</html>
