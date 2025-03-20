@@ -86,8 +86,9 @@ a:visited {
 
 #landing{
     position: relative;
-    background: url(img/toy\ store\ 1.png)no-repeat;
+    background: url(img/anime.png)no-repeat;
     background-size: cover;
+    
 }
 
 #landing .right-side .image img{
@@ -101,10 +102,10 @@ a:visited {
 
 #landing .right-side .image1 img{
     position: absolute;
-    top: 100px;
+    bottom: 100px;
     right: 0;
     z-index: 2;
-    width: 40%;
+    width: 10%;
 }
 
 #landing .left-side .topic h1{
@@ -115,7 +116,7 @@ a:visited {
     padding-left: 200px;
     width: 60%;
     text-shadow:10px 10px 10px #FFf;
-    color: #fff;
+    color: #000;
 }
 
 #landing .left-side .text p{
@@ -123,6 +124,7 @@ a:visited {
     padding-left: 200px;
     padding-top: 20px;
     color: #fff;
+    font-size: 1rem;
 }
 
 #landing .left-side button{
@@ -355,6 +357,8 @@ a:visited {
     margin-left: 25%;
     margin-right: 10px;
     text-align: center;
+    font-size: 0.9rem;
+    
 }
 
 
@@ -439,11 +443,8 @@ a:visited {
 
 #customdesign .left-side .box{
     width: 90%;
-    height: 70VH;
+    height: 70vh;
     box-shadow: 0px 0px 30px rgba(146,0,198,1);
-
-
-
 }
 
 #customdesign .left-side .box:hover{
@@ -487,7 +488,7 @@ to{
 
 #customdesign .right-side p{
     margin-top: 5%;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-family: "Inter", sans-serif;
 
 }
@@ -739,6 +740,7 @@ img{
 
     #New-arrival{
         width: 100vw;
+        height: fit-content;
         margin-top: 10%;
     }
 
@@ -746,10 +748,132 @@ img{
     #New-arrival .image{
         position: absolute;
         height: 10px;
-        margin-left: 4%;
+        display: none;
+    }
+
+    #New-arrival .boxes{
+        margin: 0 ;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #New-arrival .boxes .box{
+        width: 50%;
     }
 
 
+    #favoritetoys{
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 80px;
+    }
+
+    #favoritetoys .title h1{
+        font-size: 2rem;
+    }
+
+    #favoritetoys .imagebox{
+        margin-top: 100px;
+        height: 40vh;
+    }
+
+    #favoritetoys .boxes{
+        width: 60%;
+        margin-left: 30px;
+        border-radius: 2px solid #000;
+    }
+
+    #favoritetoys .boxes .box{
+        width: 100px;
+        height: 100px;
+        flex-direction: row;
+        margin: 10px 10px;
+        border-radius: 2px solid black;
+        overflow: hidden;
+
+    }
+
+    #favoritetoys .boxes .box p{
+        font-size: 0.5rem;
+    }
+
+    #discount{
+        height: 80vh;
+        margin: 0;
+    }
+
+    #discount .bigdiscount img{
+        width: 30%;
+    }
+    #discount .bigdiscount h1{
+        font-size: 1.5rem;
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+
+    #discount .bigdiscount p{
+        display: none;
+    }
+
+    #discount .smalldiscount1 h1{
+        font-size: 1.5rem;
+    }
+
+    #discount .smalldiscount2 img{
+        left: 0;
+    }
+
+    #discount .smalldiscount2 h1{
+        font-size: 1.5rem;
+        margin: 50px 0 0 0 ;
+    }
+
+    #customdesign{
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: fit-content;
+        align-items: center;
+    }
+
+    #customdesign .left-side{
+        width: 100%;
+        padding: 0 50px;
+        margin: 0;
+    }
+
+    #customdesign .right-side{
+        margin: 0;
+        
+    }
+
+    #customdesign .right-side{
+        width: 100%;
+    }
+
+    #customdesign .right-side h1{
+        padding: 30px;
+    }
+
+    #customdesign .right-side p{
+        padding: 0 30px;
+    }
+
+    #footer{
+        padding-top: 20px;
+        border-top: 1px solid #000;
+    }
+
+    #footer .detail p{
+        font-size: 0.6rem;
+    }
+
+    #footer h2,
+    #footer p,
+    #footer .quick-link ul a{
+        font-size: 0.8rem;
+    }
 
 
 .boxes{
